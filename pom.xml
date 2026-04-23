@@ -16,8 +16,8 @@
     <properties>
         <java.version>17</java.version>
         <spring-cloud.version>2023.0.1</spring-cloud.version>
-        <sonar.projectKey>HermiEya_notification_service</sonar.projectKey>
-        <sonar.organization>hermieya</sonar.organization>
+        <sonar.projectKey>EyaHermi2025_notification_service</sonar.projectKey>
+        <sonar.organization>eyahermi2025</sonar.organization>
         <sonar.host.url>https://sonarcloud.io</sonar.host.url>
         <sonar.coverage.exclusions>
             **/tn/esprit/notificationservice/entity/**,
