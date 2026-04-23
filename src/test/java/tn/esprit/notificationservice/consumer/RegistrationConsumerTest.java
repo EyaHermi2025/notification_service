@@ -8,11 +8,10 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import tn.esprit.notificationservice.dto.ClubRegistrationEvent;
 import tn.esprit.notificationservice.service.EmailService;
 
-import static org.mockito.Mockito.times;
-import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
-public class RegistrationConsumerTest {
+class RegistrationConsumerTest {
 
     @Mock
     private EmailService emailService;
@@ -21,21 +20,14 @@ public class RegistrationConsumerTest {
     private RegistrationConsumer registrationConsumer;
 
     @Test
-    public void consumeRegistrationEvent_ShouldCallEmailService() {
+    void testConsumeRegistrationEvent() {
         // Arrange
-        ClubRegistrationEvent event = new ClubRegistrationEvent();
-        event.setEmail("test@example.com");
-        event.setFullName("John Doe");
-        event.setClubName("Tech Club");
+        ClubRegistrationEvent event = new ClubRegistrationEvent("test@example.com", "Eya Hermi", "Tech Club");
 
         // Act
         registrationConsumer.consumeRegistrationEvent(event);
 
         // Assert
-        verify(emailService, times(1)).sendWelcomeEmail(
-                "test@example.com",
-                "John Doe",
-                "Tech Club"
-        );
+        verify(emailService, times(1)).sendWelcomeEmail("test@example.com", "Eya Hermi", "Tech Club");
     }
 }

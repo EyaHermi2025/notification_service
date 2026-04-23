@@ -16,6 +16,15 @@
     <properties>
         <java.version>17</java.version>
         <spring-cloud.version>2023.0.1</spring-cloud.version>
+        <sonar.projectKey>HermiEya_notification_service</sonar.projectKey>
+        <sonar.organization>hermieya</sonar.organization>
+        <sonar.host.url>https://sonarcloud.io</sonar.host.url>
+        <sonar.coverage.exclusions>
+            **/tn/esprit/notificationservice/entity/**,
+            **/tn/esprit/notificationservice/dto/**,
+            **/tn/esprit/notificationservice/config/**,
+            **/tn/esprit/notificationservice/security/**
+        </sonar.coverage.exclusions>
     </properties>
     <dependencies>
         <dependency>
@@ -61,6 +70,11 @@
             <version>0.11.5</version>
             <scope>runtime</scope>
         </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <optional>true</optional>
+        </dependency>
     </dependencies>
     <dependencyManagement>
         <dependencies>
@@ -82,6 +96,25 @@
                     <excludes>
                     </excludes>
                 </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+                <version>0.8.11</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>prepare-agent</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>report</id>
+                        <phase>test</phase>
+                        <goals>
+                            <goal>report</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>
