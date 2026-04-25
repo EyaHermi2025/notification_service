@@ -6,10 +6,9 @@ pipeline {
     }
 
     environment {
-        DOCKER_HUB_USER = 'eyahermi2025' // Remplace par ton utilisateur Docker Hub
+        DOCKER_HUB_USER = 'eyahermi2025'
         IMAGE_NAME = 'notification-service'
         PROJECT_KEY = 'EyaHermi2025_notification_service'
-        ORG_KEY = 'eyahermi2025'
     }
 
     stages {
