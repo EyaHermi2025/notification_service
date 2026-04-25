@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: notification-service
+  namespace: school-platform
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: notification-service
+  template:
+    metadata:
+      labels:
+        app: notification-service
+    spec:
+      containers:
+      - name: notification-service
+        image: ${DOCKER_HUB_USER}/notification-service:latest
+        ports:
+        - containerPort: 7074
+        env:
+        - name: SPRING_KAFKA_BOOTSTRAP_SERVERS
+          value: "kafka-service:9092"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: notification-service
+  namespace: school-platform
+spec:
+  selector:
+    app: notification-service
+  ports:
+    - protocol: TCP
+      port: 7074
+      targetPort: 7074
+  type: ClusterIP
