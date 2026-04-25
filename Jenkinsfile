@@ -6,7 +6,7 @@ pipeline {
     }
 
     environment {
-        DOCKER_HUB_USER = 'eyahermi2025'
+        DOCKER_HUB_USER = 'eyaeyahermi'
         IMAGE_NAME = 'notification-service'
         PROJECT_KEY = 'EyaHermi2025_notification_service'
     }
